@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load form_tags %}
+
+{% block title %}Reporte Actividades – Aediles{% endblock %}
+
+{% block content %}
+  <h1>Reporte Actividades</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <!-- Metadatos -->
+    <div class="form-group">
+      {{ form.fecha.label_tag }}
+      {{ form.fecha|add_class:"form-control" }}
+      {{ form.fecha.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.nombre.label_tag }}
+      {{ form.nombre|add_class:"form-control" }}
+      {{ form.nombre.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.parque.label_tag }}
+      {{ form.parque|add_class:"form-control" }}
+      {{ form.parque.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.nombre_archivo.label_tag }}
+      {{ form.nombre_archivo|add_class:"form-control" }}
+      {{ form.nombre_archivo.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.destinatario.label_tag }}
+      {{ form.destinatario|add_class:"form-control" }}
+      {{ form.destinatario.errors }}
+    </div>
+
+    <div class="form-group">
+      {{ form.resumen.label_tag }}
+      {{ form.resumen|add_class:"form-control" }}
+      {{ form.resumen.errors }}
+    </div>
+
+    <h3>Registro Fotográfico</h3>
+    <div class="form-group">
+      {{ form.registro_fotografico_1.label_tag }}
+      {{ form.registro_fotografico_1|add_class:"form-control" }}
+      {{ form.registro_fotografico_1.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_2.label_tag }}
+      {{ form.registro_fotografico_2|add_class:"form-control" }}
+      {{ form.registro_fotografico_2.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_3.label_tag }}
+      {{ form.registro_fotografico_3|add_class:"form-control" }}
+      {{ form.registro_fotografico_3.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_4.label_tag }}
+      {{ form.registro_fotografico_4|add_class:"form-control" }}
+      {{ form.registro_fotografico_4.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_5.label_tag }}
+      {{ form.registro_fotografico_5|add_class:"form-control" }}
+      {{ form.registro_fotografico_5.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_6.label_tag }}
+      {{ form.registro_fotografico_6|add_class:"form-control" }}
+      {{ form.registro_fotografico_6.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_7.label_tag }}
+      {{ form.registro_fotografico_7|add_class:"form-control" }}
+      {{ form.registro_fotografico_7.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_8.label_tag }}
+      {{ form.registro_fotografico_8|add_class:"form-control" }}
+      {{ form.registro_fotografico_8.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_9.label_tag }}
+      {{ form.registro_fotografico_9|add_class:"form-control" }}
+      {{ form.registro_fotografico_9.errors }}
+    </div>
+    <div class="form-group">
+      {{ form.registro_fotografico_10.label_tag }}
+      {{ form.registro_fotografico_10|add_class:"form-control" }}
+      {{ form.registro_fotografico_10.errors }}
+    </div>
+
+    <button type="submit" class="btn-primary">Generar Informe</button>
+  </form>
+
+  {% if mensaje_exito %}
+  <div id="popup-overlay" class="popup-overlay" style="display:flex;">
+    <div class="popup">
+      <p>Informe enviado con éxito</p>
+      <button id="popup-close" class="btn-primary">Cerrar</button>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('popup-close').addEventListener('click', function() {
+        document.getElementById('popup-overlay').style.display = 'none';
+      });
+    });
+  </script>
+  {% endif %}
+{% endblock %}

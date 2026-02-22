@@ -1,0 +1,9 @@
+Django>=4.2
+gunicorn
+reportlab
+WeasyPrint>=60.0
+docxtpl
+python-docx
+Pillow
+whitenoise
+

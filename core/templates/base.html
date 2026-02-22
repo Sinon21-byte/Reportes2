@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Aediles – Generar Reporte{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="{% static 'images/aediles_logo.png' %}" alt="Aediles" height="40">
+      </a>
+        {% if nombre %}
+        <nav class="main-nav">
+          <a href="{% url 'formulario' %}" class="{% if active_tab == 'formulario' %}active{% endif %}">Inspección Rutinaria</a>
+          <a href="{% url 'actividades' %}" class="{% if active_tab == 'actividades' %}active{% endif %}">Reporte Actividades</a>
+        </nav>
+        <select id="nav-select" class="nav-select">
+          <option value="{% url 'formulario' %}" {% if active_tab == 'formulario' %}selected{% endif %}>Inspección Rutinaria</option>
+          <option value="{% url 'actividades' %}" {% if active_tab == 'actividades' %}selected{% endif %}>Reporte Actividades</option>
+        </select>
+        <div class="user-info">
+          Bienvenido(a), {{ nombre }}
+        </div>
+        {% endif %}
+    </div>
+  </header>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var navSelect = document.getElementById('nav-select');
+      if (navSelect) {
+        navSelect.addEventListener('change', function() {
+          window.location.href = this.value;
+        });
+      }
+    });
+  </script>
+</body>
+</html>

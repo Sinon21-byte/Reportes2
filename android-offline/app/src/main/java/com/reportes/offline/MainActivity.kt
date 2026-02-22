@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
         val contentUri: Uri = FileProvider.getUriForFile(
             this,
-            "${BuildConfig.APPLICATION_ID}.provider",
+            "$packageName.provider",
             reportFile
         )
 
